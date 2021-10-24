@@ -1,6 +1,7 @@
 var combinationSum = function(candidates, target) {
     let solutions = []
-    let sortedCand = candidates.sort((a, b) => a - b)
+    let filteredCand = candidates.filter((x) => x <= target)
+    let sortedCand = filteredCand.sort((a, b) => a - b)
 
     function findSum(numsPicked, numsRem, target) {
         for (var i = 0; i < numsRem.length; i++) {
@@ -30,9 +31,9 @@ var combinationSum = function(candidates, target) {
             }
         }
     }
-
+    
     findSum([], sortedCand, target)
     return solutions
 };
 
-console.log(combinationSum([2,5,2,1,2], 5))
+console.log(combinationSum([2,5,2,1,2,7], 5))
